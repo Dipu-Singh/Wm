@@ -1,0 +1,34 @@
+.jumbotron {
+    width: 100%;
+    height: auto;
+    background-image: url(../Asset/bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    opacity: 0.8;
+    /* clip-path: polygon(100% 0,100% 75%, 50% 100%,0 75%,0 0);
+    position: relative;
+    text-align: center; */
+}
+
+#myChart {
+    width: 50%;
+    height: auto;
+}
+
+
+.Bd {
+    position: relative;
+    padding: 1em;
+    border: solid gray;
+    border-width: 1px;
+    background-color: gray;
+
+}
+
+.carousel-control-prev {
+    color: red;
+}
+
+.carousel-control-next {
+    color: red;
+}
