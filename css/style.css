@@ -10,10 +10,7 @@
     text-align: center; */
 }
 
-#myChart {
-    width: 50%;
-    height: auto;
-}
+
 
 
 .Bd {
@@ -23,12 +20,4 @@
     border-width: 1px;
     background-color: gray;
 
-}
-
-.carousel-control-prev {
-    color: red;
-}
-
-.carousel-control-next {
-    color: red;
 }

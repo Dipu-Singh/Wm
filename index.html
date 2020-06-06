@@ -17,6 +17,11 @@
 
   <title>Project-WM</title>
   <link rel="icon" href="./Asset/titleoio.png">
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+  <script src="httsps://www.gstatic.com/firebasejs/7.14.2/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-database.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.js"></script>
 
 </head>
 
@@ -32,8 +37,15 @@
 
   <div class="container">
     <a class="text-uppercase text-muted"><u>Data Analytics</u></a>
-    <div><iframe src="firebase.html" width="100%" height="320" scrolling="no" loading="lazy" frameBorder="0"></iframe>
-    </div>
+    <pre id="object"></pre>
+
+    <!-- child -->
+
+    <section>
+      <canvas id="myChart" width="300px" height="300px"></canvas>
+      <script src="app.js"></script>
+    </section>
+
 
   </div>
 
@@ -42,8 +54,8 @@
     <div class="row justify-content-center">
       <div class="col-sm-4">
         <h4>Why To Think/Do this?</h4>
-        <p>When you want save your Love-Once.</p>
-        <p>Data & Science Lead anything that You can Imagine. To Get to Know More click on below link.</p>
+        <p>When you want to save your Love-Once.</p>
+        <p>Data & Science Lead to anything that You can Imagine. To Get to Know More click on below link.</p>
         <button type="button" class="btn btn-danger">Read-More</button>
       </div>
     </div>
