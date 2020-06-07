@@ -45,6 +45,7 @@
     var dbRefObject = firebase.database().ref(); // refferance <- DB
     var ReD = []; // array-list * Dynamic 
     var PeD = []; // For Power 
+    var SqD = []; // For scurity
     var color = [];
     var col;
 
@@ -56,7 +57,7 @@
         console.log("MMMMMMMMMM", snap.val()) // pointing > obj
         console.log("MMMMMMMMMM", snap.key)
         snap.forEach(function (child) {
-            console.log("llll", child.key)
+
             if (child.key == "Name of Network") {
 
                 child.forEach(function (value) {
@@ -66,11 +67,38 @@
                 })
 
             }
+
+
             if (child.key == "Power of Network") {
 
                 child.forEach(function (value) {
-                    console.log(value.val())
+
                     PeD.push(value.val())
+                    if (ReD.length > 0) {
+
+                        while (color.length < ReD.length) {
+                            col = getRandomColor()
+                            color.push(col)
+                            // Mapping all color with update and Data
+                        }
+
+                        if (color.length == PeD.length) {
+
+                            Test1(ReD, PeD, color)
+
+                        }
+
+                    }
+                })
+            }
+
+
+            if (child.key == "S_Status of Network") {
+
+
+                child.forEach(function (value) {
+                    console.log(value.val())
+                    SqD.push(value.val())
                     if (ReD.length > 0) {
 
                         while (color.length < ReD.length) {
@@ -79,15 +107,16 @@
                         }
                         console.log("#####", color.length)
 
-                        if (color.length == PeD.length) {
-                            console.log("???????????", color)
-                            john(ReD, PeD, color)
+                        if (color.length == SqD.length) {
+
+                            Test2(ReD, SqD, color)
 
                         }
 
                     }
                 })
             }
+
         })
 
     });
@@ -95,37 +124,15 @@
 }());
 
 
-
-// var ctx = document.getElementById('myChart');
-// var chart = new Chart(ctx, {
-//     // The type of chart we want to create
-//     type: 'line',
-
-//     // The data for our dataset
-//     data: {
-//         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-//         datasets: [{
-//             label: 'My First dataset',
-//             backgroundColor: 'rgb(255, 99, 132)',
-//             borderColor: 'rgb(255, 99, 132)',
-//             data: [0, 10, 5, 2, 20, 30, 45]
-//         }]
-//     },
-
-//     // Configuration options go here
-//     options: {}
-// });
-
-
-function john(ReD, PeD, color) {
+// Data @ 1 Power Chart 1
+function Test1(ReD, PeD, color) {
     const ctx = document.getElementById('myChart');
 
     Chart.defaults.scale.ticks.beginAtZero = true;
-    console.log("______________", ReD);
-    console.log("______________", PeD);
+
     const chart = new Chart(ctx, {
 
-        type: 'doughnut',
+        type: 'doughnut', // Type of Chart
         data: {
             // These labels appear in the legend and in the tooltips when hovering different arcs
             labels: ReD,
@@ -148,14 +155,45 @@ function john(ReD, PeD, color) {
     });
 }
 
+// Data @ 2 Scurity Chart 2
+function Test2(ReD, SqD, color) {
+    const ctx = document.getElementById('myChart10');
 
+    Chart.defaults.scale.ticks.beginAtZero = true;
+    const chart = new Chart(ctx, {
+
+        type: 'polarArea', // Type of Chart
+        data: {
+            // These labels appear in the legend and in the tooltips when hovering different arcs
+            labels: ReD,
+            datasets: [{
+                label: 'Signal',
+
+                backgroundColor: color,
+                data: SqD,
+
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            animation: {
+                animateScale: true
+            }
+        }
+
+
+    });
+}
+
+
+// Color Gen 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
     var color = '#';
     for (var i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * 16)];
     }
-    console.log(">>>>>>>", color)
+    console.log(">>>>>>>", color) // Checkin Color hex code
     return color;
 
 }
